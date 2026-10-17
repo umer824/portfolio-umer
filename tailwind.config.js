@@ -4,24 +4,29 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        brand: {
-          bg: '#090d16',
-          card: 'rgba(18, 27, 46, 0.75)',
-          border: 'rgba(255, 255, 255, 0.08)',
-          cyan: '#38bdf8',
-          blue: '#3b82f6',
-          indigo: '#6366f1',
-          emerald: '#10b981',
-        }
+        bg: '#FDF8F3',
+        accent: {
+          DEFAULT: '#F15A24',
+          hover: '#D94917',
+          light: '#FDEEE8',
+        },
+        primary: '#1C1C1C',
+        secondary: '#666666',
+        card: '#FFFFFF',
+        border: '#EAE4DD',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Manrope', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Manrope', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+      },
+      boxShadow: {
+        'subtle': '0 2px 10px rgba(0, 0, 0, 0.03)',
+        'card': '0 4px 20px rgba(28, 28, 28, 0.04)',
+        'card-hover': '0 12px 32px rgba(28, 28, 28, 0.08)',
       }
     },
   },

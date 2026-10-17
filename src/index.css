@@ -20,6 +20,21 @@ html {
   color: var(--text-primary);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -47,11 +62,20 @@ body {
 
 /* Subtle accent text utility */
 .accent-text {
-  color: var(--accent-primary);
+  color: #B23B15;
+}
+
+/* Keep accent labels readable against light surfaces and white button text at AA contrast. */
+.text-\[\#F15A24\] {
+  color: #B23B15;
+}
+
+.bg-\[\#F15A24\] {
+  background-color: #B23B15;
 }
 
 /* Selection */
 ::selection {
   background-color: rgba(241, 90, 36, 0.15);
-  color: #F15A24;
+  color: #B23B15;
 }

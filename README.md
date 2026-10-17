@@ -1,97 +1,53 @@
-# Umer Jahangir — Developer Portfolio (React & TypeScript)
+# Umer Jahangir Portfolio
 
-A modern, responsive, and minimalist developer portfolio web application for **Umer Jahangir**, Junior Web Developer, Frontend Specialist, and Aspiring Full Stack Engineer based in Karachi, Pakistan.
+A responsive personal portfolio built with React, TypeScript, Vite, and Tailwind CSS.
 
-## 🛠️ Technology Stack
+## Run locally
 
-- **Frontend Framework**: [React.js](https://react.dev/) (Component-Driven Architecture)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict typing & data models)
-- **Build Tool**: [Vite](https://vitejs.dev/) (Sub-second HMR & optimized production bundling)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & Modern CSS3 Design System
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) (Smooth transitions & modal dialogs)
-- **Iconography**: [Lucide React](https://lucide.dev/)
-- **Development Tools**: Git, GitHub, Visual Studio Code
-
-## 🌟 Architecture & Features
-
-- **Component-Driven Architecture**:
-  - `Header`: Sticky glassmorphic navbar with active scrollspy, mobile drawer, resume PDF link, and dark/light mode toggle.
-  - `Hero`: Available for work indicator, photo showcase, live Karachi PKT clock, and social buttons.
-  - `About`: Professional summary and developer profile snapshot.
-  - `Skills`: Interactive category filter for Frontend, Backend, Databases, and Tools.
-  - `Projects`: Real hands-on project cards with interactive case study modals (`LinguaQuest`, `Iris AI Assistant`, `KicksHub Storefront`, `3D Perspective UI Engine`).
-  - `Experience`: Authentic career and training trajectory timeline.
-  - `Education`: Formal qualifications (Saylani S.M.I.T, Cisco Networking Academy, BSEK) and certifications.
-  - `Terminal`: Interactive in-browser developer CLI simulator (`whoami`, `skills`, `projects`, `education`, `contact`, `resume`, `karachi-time`).
-  - `Contact`: Primary contact channels, copy-to-clipboard buttons, and mailto inquiry form.
-- **Zero Backend Required**: Fully client-side, secure, and fast.
-
-## 📂 Project Structure
-
-```
-portfolio/
-├── dist/                          # Production-ready build artifacts
-├── public/
-│   ├── assets/
-│   │   ├── favicon.svg            # Vector monogram favicon
-│   │   ├── umer-profile.jpg       # Authentic profile photo
-│   │   ├── Umer_Jahangir_Resume.pdf # Downloadable resume PDF
-│   │   ├── linguaquest-preview.svg# LinguaQuest project preview
-│   │   ├── iris-preview.svg       # Iris AI Assistant preview
-│   │   ├── shoestore-preview.svg  # React Storefront preview
-│   │   └── hero3d-preview.svg     # 3D Perspective UI preview
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── About.tsx              # About narrative & specs
-│   │   ├── AmbientGlow.tsx        # Ambient background lights
-│   │   ├── Contact.tsx            # Contact cards & form
-│   │   ├── Education.tsx          # Education & certificates
-│   │   ├── Experience.tsx         # Career timeline
-│   │   ├── Footer.tsx             # Footer & copyright
-│   │   ├── Header.tsx             # Sticky nav & theme toggle
-│   │   ├── Hero.tsx               # Hero showcase & stats
-│   │   ├── ProjectModal.tsx       # Architectural case studies
-│   │   ├── Projects.tsx           # Projects grid & filter
-│   │   ├── Skills.tsx             # Skills grid & filter
-│   │   └── Terminal.tsx           # Interactive CLI console
-│   ├── data/
-│   │   └── portfolioData.ts       # Central verified data store
-│   ├── types/
-│   │   └── index.ts               # TypeScript data interfaces
-│   ├── App.tsx                    # Root application component
-│   ├── index.css                  # Tailwind & global design tokens
-│   └── main.tsx                   # DOM entry point
-├── index.html                     # Semantic HTML5 template
-├── package.json                   # Dependencies & build scripts
-├── postcss.config.js              # PostCSS config
-├── tailwind.config.js             # Tailwind CSS tokens
-├── tsconfig.json                  # TypeScript compiler options
-└── vite.config.ts                 # Vite bundler configuration
-```
-
-## 🚀 Running Locally
-
-```bash
-# 1. Install dependencies
+```sh
 npm install
-
-# 2. Start local development server
 npm run dev
+```
 
-# 3. Create production build
+## Verify a production build
+
+```sh
 npm run build
-
-# 4. Preview production build locally
 npm run preview
 ```
 
-## 📬 Contact & Profiles
+There is no separate automated test script configured. After previewing the build, manually check navigation, mobile menu, profile links, project repository/demo links, resume download, contact form validation, and the email draft link. The contact form opens a prefilled `mailto:` draft; it does not submit to a server.
 
-- **Email**: [jahangiru837@gmail.com](mailto:jahangiru837@gmail.com)
-- **LinkedIn**: [linkedin.com/in/umer-jahangir-8b3583328](https://www.linkedin.com/in/umer-jahangir-8b3583328/)
-- **GitHub**: [github.com/umer824](https://github.com/umer824)
-- **Location**: Karachi, Sindh, Pakistan
+## Customize content
 
----
-© 2026 Umer Jahangir. Built with React, Vite, TypeScript & Tailwind CSS.
+- Update the verified name, title, location, email, LinkedIn, and GitHub values in [`src/data/profile.ts`](./src/data/profile.ts).
+- Edit project titles, copy, verified destinations, and preview assets in [`src/data/selectedProjects.ts`](./src/data/selectedProjects.ts).
+- Edit skills, education, certifications, and development journey in [`src/data/portfolioData.ts`](./src/data/portfolioData.ts).
+- Replace static image assets and the resume in `public/assets/`.
+
+## Deploy
+
+Push the project to a Git provider and import that repository in Vercel or Netlify. Use the repository root as the project root and set:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Output / publish directory | `dist` |
+
+Both platforms can also detect Vite projects automatically. Follow the platform prompts to connect the repository, select the production branch, and deploy. Subsequent commits to that branch can trigger new builds. Deployment is not configured from this repository yet.
+
+Platform references: [Vercel: Vite](https://vercel.com/docs/frameworks/frontend/vite) · [Netlify: Vite](https://docs.netlify.com/build/frameworks/framework-setup-guides/vite/)
+
+## Project structure
+
+```text
+public/assets/        Profile image, project previews, favicon, and resume PDF
+src/components/       Reusable page sections and interface components
+src/data/profile.ts   Canonical contact and social profile details
+src/data/             Project, skill, education, and journey content
+src/types/            Shared TypeScript data types
+src/App.tsx           Page composition and global interactions
+src/main.tsx          React application entry point
+src/index.css         Tailwind directives and global styles
+index.html            Page metadata and document shell
+```

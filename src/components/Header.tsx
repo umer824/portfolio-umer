@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { profile } from '../data/profile';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,7 +12,7 @@ export const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sectionIds = ['home', 'about', 'skills', 'projects', 'education', 'contact'];
+      const sectionIds = ['home', 'about', 'skills', 'projects', 'experience', 'strengths', 'education', 'contact'];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
@@ -46,6 +47,8 @@ export const Header: React.FC = () => {
     { label: 'About', href: '#about', id: 'about' },
     { label: 'Skills', href: '#skills', id: 'skills' },
     { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Journey', href: '#experience', id: 'experience' },
+    { label: 'Strengths', href: '#strengths', id: 'strengths' },
     { label: 'Education', href: '#education', id: 'education' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
@@ -55,7 +58,8 @@ export const Header: React.FC = () => {
     setMobileMenuOpen(false);
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      targetElement.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
       setActiveSection(targetId);
       window.history.pushState(null, '', `#${targetId}`);
     }
@@ -85,12 +89,12 @@ export const Header: React.FC = () => {
 
           {/* Name */}
           <span className="font-display font-bold text-[#1C1C1C] text-base sm:text-lg tracking-tight group-hover:text-[#F15A24] transition-colors">
-            {personalInfo.name}
+            {profile.name}
           </span>
         </a>
 
         {/* Center / Navigation Links (Desktop) */}
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Main Navigation">
+        <nav className="hidden xl:flex items-center gap-7" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -118,10 +122,10 @@ export const Header: React.FC = () => {
           {/* Social Icons (GitHub & LinkedIn) */}
           <div className="hidden sm:flex items-center gap-2 pr-1 border-r border-[#EAE4DD]">
             <a
-              href={personalInfo.githubUrl}
+              href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
+              className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
               aria-label="GitHub Profile"
               title="GitHub Profile (@umer824)"
             >
@@ -129,10 +133,10 @@ export const Header: React.FC = () => {
             </a>
 
             <a
-              href={personalInfo.linkedinUrl}
+              href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
+              className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
               aria-label="LinkedIn Profile"
               title="LinkedIn Profile"
             >
@@ -146,7 +150,7 @@ export const Header: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             download="Umer_Jahangir_Resume.pdf"
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-[#1C1C1C] hover:bg-[#333333] text-white text-xs font-semibold tracking-wide transition-all shadow-[0_2px_8px_rgba(28,28,28,0.12)] hover:shadow-[0_4px_14px_rgba(28,28,28,0.2)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
+            className="hidden sm:inline-flex min-h-11 items-center gap-2 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full bg-[#1C1C1C] hover:bg-[#333333] text-white text-xs font-semibold tracking-wide transition-all shadow-[0_2px_8px_rgba(28,28,28,0.12)] hover:shadow-[0_4px_14px_rgba(28,28,28,0.2)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
             aria-label="Download Official Resume PDF"
           >
             <Download className="w-3.5 h-3.5 text-[#F15A24]" />
@@ -156,9 +160,10 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-10 h-10 rounded-xl bg-white border border-[#EAE4DD] flex items-center justify-center text-[#1C1C1C] hover:border-[#1C1C1C] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
+            className="xl:hidden w-11 h-11 shrink-0 rounded-xl bg-white border border-[#EAE4DD] flex items-center justify-center text-[#1C1C1C] hover:border-[#1C1C1C] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
             aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -167,11 +172,7 @@ export const Header: React.FC = () => {
 
       {/* Responsive Mobile Drawer */}
       {mobileMenuOpen && (
-        <div
-          className="lg:hidden bg-[#FDF8F3] border-b border-[#EAE4DD] px-6 py-6 flex flex-col gap-5 shadow-[0_12px_32px_rgba(0,0,0,0.06)] animate-in slide-in-from-top-2 duration-200"
-          role="dialog"
-          aria-label="Mobile Menu"
-        >
+        <div id="mobile-navigation" className="xl:hidden bg-[#FDF8F3] border-b border-[#EAE4DD] px-6 py-6 flex flex-col gap-5 shadow-[0_12px_32px_rgba(0,0,0,0.06)] animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
@@ -180,7 +181,7 @@ export const Header: React.FC = () => {
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className={`text-base font-semibold py-2.5 px-3 rounded-xl transition-colors flex items-center justify-between ${
+                  className={`min-h-11 text-base font-semibold py-3 px-3 rounded-xl transition-colors flex items-center justify-between ${
                     isActive
                       ? 'bg-white text-[#F15A24] border border-[#EAE4DD]'
                       : 'text-[#1C1C1C] hover:bg-white/60'
@@ -200,7 +201,7 @@ export const Header: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               download="Umer_Jahangir_Resume.pdf"
-              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#1C1C1C] text-white text-xs font-semibold shadow-sm"
+              className="min-h-11 w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#1C1C1C] text-white text-xs font-semibold shadow-sm"
             >
               <Download className="w-4 h-4 text-[#F15A24]" />
               <span>Download Resume (PDF)</span>
@@ -209,19 +210,19 @@ export const Header: React.FC = () => {
             {/* Social Icons row for mobile */}
             <div className="flex items-center justify-center gap-3 pt-1">
               <a
-                href={personalInfo.githubUrl}
+                href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] transition-colors"
+                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
                 aria-label="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href={personalInfo.linkedinUrl}
+                href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] transition-colors"
+                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24]"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-4 h-4" />

@@ -6,6 +6,7 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
+import { Strengths } from './components/Strengths';
 import { Education } from './components/Education';
 import { Terminal } from './components/Terminal';
 import { Contact } from './components/Contact';
@@ -24,7 +25,8 @@ export const App: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   return (
@@ -37,6 +39,7 @@ export const App: React.FC = () => {
         <Skills />
         <Projects />
         <Experience />
+        <Strengths />
         <Education />
         <Terminal />
         <Contact />

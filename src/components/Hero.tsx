@@ -1,184 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, ArrowRight, Download, Mail, Phone, Github, Linkedin, Clock } from 'lucide-react';
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowDownRight, ArrowUpRight, Download, Github, Linkedin, MapPin } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { profile } from '../data/profile';
 
 export const Hero: React.FC = () => {
-  const [karachiTime, setKarachiTime] = useState('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      try {
-        const now = new Date();
-        const formatter = new Intl.DateTimeFormat('en-US', {
-          timeZone: 'Asia/Karachi',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true,
-        });
-        setKarachiTime(`${formatter.format(now)} PKT`);
-      } catch {
-        setKarachiTime('Karachi (UTC+5)');
-      }
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const reduceMotion = useReducedMotion();
+  const entrance = (delay = 0) => reduceMotion
+    ? {}
+    : { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.45, delay } };
 
   return (
-    <section id="home" className="relative pt-36 pb-20 md:pt-44 md:pb-28">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Editorial Info & Pitch */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-7 flex flex-col gap-6"
-          >
-            {/* Status & Location Row */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE4DD] text-[#1C1C1C] text-xs font-semibold shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-                <span className="w-2 h-2 rounded-full bg-[#F15A24] animate-pulse" />
-                Available for Roles &amp; Internships
-              </div>
-              <div className="inline-flex items-center gap-1.5 font-mono text-xs text-[#666666]">
-                <MapPin className="w-3.5 h-3.5 text-[#F15A24]" />
-                {personalInfo.location}
-              </div>
-            </div>
-
-            {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-[#1C1C1C] tracking-tight leading-[1.1]">
-              Hi, I'm <span className="text-[#F15A24]">{personalInfo.name}</span>
-            </h1>
-
-            {/* Roles Subtitle */}
-            <div className="flex flex-wrap items-center gap-2 text-base sm:text-lg font-semibold text-[#666666]">
-              <span className="text-[#1C1C1C]">Junior Web Developer</span>
-              <span className="text-[#EAE4DD]">•</span>
-              <span className="text-[#F15A24]">Frontend Specialist</span>
-              <span className="text-[#EAE4DD]">•</span>
-              <span className="text-[#1C1C1C]">Aspiring Full Stack Engineer</span>
-            </div>
-
-            {/* Bio Summary */}
-            <p className="text-[#666666] text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-              {personalInfo.summary}
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#F15A24] hover:bg-[#D94917] text-white font-semibold text-sm shadow-[0_2px_10px_rgba(241,90,36,0.25)] hover:shadow-[0_4px_16px_rgba(241,90,36,0.35)] hover:-translate-y-0.5 transition-all"
-              >
-                Explore Projects
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href={personalInfo.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                download="Umer_Jahangir_Resume.pdf"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white border border-[#EAE4DD] hover:border-[#1C1C1C] text-[#1C1C1C] font-semibold text-sm shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 transition-all"
-              >
-                <Download className="w-4 h-4 text-[#666666]" />
-                Download Resume (PDF)
-              </a>
-            </div>
-
-            {/* Social Channels */}
-            <div className="flex items-center gap-3 pt-3">
-              <a
-                href={personalInfo.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub (@umer824)"
-                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:-translate-y-0.5"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-
-              <a
-                href={personalInfo.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn Profile"
-                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:-translate-y-0.5"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-
-              <a
-                href={`mailto:${personalInfo.email}`}
-                title={`Send Email (${personalInfo.email})`}
-                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:-translate-y-0.5"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-
-              <a
-                href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
-                title={`Call / WhatsApp (${personalInfo.phone})`}
-                className="w-11 h-11 rounded-full bg-white border border-[#EAE4DD] flex items-center justify-center text-[#666666] hover:text-[#F15A24] hover:border-[#F15A24] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:-translate-y-0.5"
-              >
-                <Phone className="w-5 h-5" />
-              </a>
-            </div>
+    <section id="home" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-24 h-96 w-96 rounded-full bg-[#F15A24]/[0.07] blur-3xl" />
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-12 lg:gap-10">
+        <div className="flex flex-col items-start lg:col-span-7">
+          <motion.div {...entrance()} className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#EAE4DD] bg-white/80 px-3.5 py-2 text-[11px] font-bold tracking-[0.16em] text-[#666666] shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-[#F15A24]" />
+            {profile.title.toUpperCase()}
           </motion.div>
 
-          {/* Right Column: Clean Editorial Profile Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="lg:col-span-5 flex justify-center"
-          >
-            <div className="w-full max-w-sm rounded-3xl bg-white border border-[#EAE4DD] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
-              {/* Photo Box */}
-              <div className="relative aspect-[4/4.5] rounded-2xl overflow-hidden bg-[#FDF8F3] border border-[#EAE4DD] mb-4">
-                <img
-                  src={personalInfo.photoUrl}
-                  alt={personalInfo.name}
-                  className="w-full h-full object-cover object-[center_20%]"
-                />
+          <motion.h1 {...entrance(0.06)} className="max-w-3xl font-display text-[clamp(2.8rem,6vw,5.4rem)] font-extrabold leading-[1.04] tracking-[-0.055em] text-[#1C1C1C]">
+            Building the Web,<br />
+            <span className="text-[#F15A24]">One Experience</span><br className="hidden sm:block" /> at a Time.
+          </motion.h1>
 
-                {/* Overlaid Time Badge */}
-                <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-sm border border-[#EAE4DD] flex items-center justify-between text-xs font-mono shadow-sm">
-                  <div className="flex items-center gap-1.5 text-[#1C1C1C]">
-                    <MapPin className="w-3.5 h-3.5 text-[#F15A24]" />
-                    <span>Karachi, PK</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[#F15A24] font-semibold">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{karachiTime || 'PKT (UTC+5)'}</span>
-                  </div>
-                </div>
-              </div>
+          <motion.p {...entrance(0.12)} className="mt-7 max-w-2xl text-base leading-8 text-[#666666] sm:text-lg">
+            I'm {profile.name}, a {profile.title} based in Karachi, Pakistan. I enjoy building responsive, accessible, and user-friendly web experiences while continuously expanding my knowledge of modern frontend and full-stack technologies.
+          </motion.p>
 
-              {/* Verified Credential Stats */}
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-2.5 rounded-xl bg-[#FDF8F3] border border-[#EAE4DD]">
-                  <div className="font-display font-extrabold text-[#F15A24] text-sm">S.M.I.T</div>
-                  <div className="text-[10px] text-[#666666] font-medium mt-0.5">Full Stack</div>
-                </div>
-                <div className="p-2.5 rounded-xl bg-[#FDF8F3] border border-[#EAE4DD]">
-                  <div className="font-display font-extrabold text-[#1C1C1C] text-sm">4+</div>
-                  <div className="text-[10px] text-[#666666] font-medium mt-0.5">Core Projects</div>
-                </div>
-                <div className="p-2.5 rounded-xl bg-[#FDF8F3] border border-[#EAE4DD]">
-                  <div className="font-display font-extrabold text-[#1C1C1C] text-sm">React 19</div>
-                  <div className="text-[10px] text-[#666666] font-medium mt-0.5">Modern UI</div>
-                </div>
-              </div>
-            </div>
+          <motion.div {...entrance(0.18)} className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#projects" className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F15A24] px-6 py-3 text-sm font-bold text-white shadow-[0_8px_24px_rgba(241,90,36,0.22)] transition hover:-translate-y-0.5 hover:bg-[#D94917] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] focus-visible:ring-offset-2">
+              Explore My Projects <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+            </a>
+            <a href={personalInfo.resumeUrl} download="Umer_Jahangir_Resume.pdf" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#EAE4DD] bg-white px-6 py-3 text-sm font-bold text-[#1C1C1C] transition hover:-translate-y-0.5 hover:border-[#1C1C1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] focus-visible:ring-offset-2">
+              <Download className="h-4 w-4 text-[#F15A24]" /> Download Resume
+            </a>
+          </motion.div>
+
+          <motion.div {...entrance(0.24)} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#EAE4DD] pt-5">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold text-[#666666] transition hover:text-[#F15A24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] rounded-sm" aria-label={`Connect with ${profile.name} on LinkedIn`}>
+              <Linkedin className="h-4 w-4" /> Connect on LinkedIn <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold text-[#666666] transition hover:text-[#F15A24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F15A24] rounded-sm" aria-label={`View ${profile.name}'s GitHub profile`}>
+              <Github className="h-4 w-4" /> View GitHub Profile <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
           </motion.div>
         </div>
+
+        <motion.div {...(reduceMotion ? {} : { initial: { opacity: 0, scale: 0.97 }, animate: { opacity: 1, scale: 1 }, transition: { duration: 0.55, delay: 0.12 } })} className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:ml-auto">
+          <div className="absolute -inset-3 rotate-3 rounded-[2rem] border border-[#F15A24]/20" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-[1.7rem] border border-[#EAE4DD] bg-white p-2.5 shadow-[0_24px_70px_rgba(28,28,28,0.12)]">
+            <div className="relative aspect-[4/4.5] overflow-hidden rounded-[1.25rem] bg-[#FDF8F3]">
+              <img src={personalInfo.photoUrl} alt="Umer Jahangir" className="h-full w-full object-cover object-[center_20%]" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1C1C1C]/75 to-transparent px-5 pb-5 pt-16 text-white">
+                <div className="font-display text-xl font-bold">{profile.name}</div>
+                <div className="mt-1 flex items-center gap-1.5 text-sm text-white/80"><MapPin className="h-3.5 w-3.5 text-[#FF9A73]" /> {profile.location}</div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute -bottom-5 -left-6 hidden items-center gap-3 rounded-2xl border border-[#EAE4DD] bg-white px-4 py-3 shadow-lg sm:flex">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FDEEE8] font-mono text-sm font-bold text-[#F15A24]">&lt;/&gt;</span>
+            <span className="text-xs font-semibold leading-5 text-[#1C1C1C]">Thoughtful code,<br />useful experiences</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

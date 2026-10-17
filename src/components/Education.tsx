@@ -1,81 +1,56 @@
 import React from 'react';
-import { GraduationCap, Award, CheckCircle2 } from 'lucide-react';
+import { Award, GraduationCap } from 'lucide-react';
 import { educationList, certificationsList } from '../data/portfolioData';
+import { SectionReveal } from './SectionReveal';
 
-export const Education: React.FC = () => {
-  return (
-    <section id="education" className="py-24 border-y border-[#EAE4DD] bg-[#FDF8F3]">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-white border border-[#EAE4DD] text-[#F15A24] font-mono text-xs font-semibold uppercase tracking-widest mb-3 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-            Credentials
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-[#1C1C1C] tracking-tight">
-            Education &amp; Certifications
-          </h2>
-          <p className="text-[#666666] text-sm sm:text-base mt-3 leading-relaxed">
-            Formal training, technical qualifications, and specialized competencies.
-          </p>
+export const Education: React.FC = () => (
+  <section id="education" className="border-y border-[#EAE4DD] bg-[#FDF8F3] py-20 sm:py-24">
+    <SectionReveal className="mx-auto max-w-6xl px-6">
+      <div className="mb-12 max-w-2xl">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-px w-10 bg-[#F15A24]" aria-hidden="true" />
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#F15A24]">Learning &amp; Credentials</span>
+        </div>
+        <h2 className="font-display text-3xl font-extrabold tracking-tight text-[#1C1C1C] sm:text-4xl">Education &amp; Certifications</h2>
+      </div>
+
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-5">
+        <div className="lg:col-span-3">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDEEE8] text-[#F15A24]"><GraduationCap className="h-5 w-5" /></span>
+            <h3 className="font-display text-xl font-bold text-[#1C1C1C]">Education</h3>
+          </div>
+          <div className="relative space-y-4 before:absolute before:bottom-5 before:left-[19px] before:top-5 before:w-px before:bg-[#EAE4DD]">
+            {educationList.map((item) => (
+              <article key={item.degree} className="relative flex gap-4 rounded-2xl border border-[#EAE4DD] bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.025)] transition hover:border-[#F15A24]/40 sm:p-6">
+                <span className="relative z-10 mt-1 h-2.5 w-2.5 shrink-0 rounded-full border-2 border-white bg-[#F15A24] ring-2 ring-[#FDEEE8]" aria-hidden="true" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <h4 className="font-display text-base font-bold text-[#1C1C1C]">{item.degree}</h4>
+                    <span className="rounded-full bg-[#FDEEE8] px-3 py-1 text-xs font-bold text-[#B64620]">{item.year}</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-[#666666]">{item.institution}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Column 1: Formal Education */}
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FDEEE8] text-[#F15A24] flex items-center justify-center">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-[#1C1C1C] text-xl">Formal Education</h3>
-            </div>
-
-            <div className="space-y-4">
-              {educationList.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#EAE4DD] rounded-3xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-[#F15A24]/40 transition-all"
-                >
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FDEEE8] text-[#F15A24] font-mono text-xs font-semibold mb-2">
-                    {item.year}
-                  </span>
-                  <h4 className="font-display font-bold text-[#1C1C1C] text-base">{item.degree}</h4>
-                  <div className="text-[#F15A24] text-xs font-semibold mb-2">{item.institution}</div>
-                  <p className="text-[#666666] text-xs sm:text-sm leading-relaxed">{item.description}</p>
-                </div>
-              ))}
-            </div>
+        <div className="lg:col-span-2">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDEEE8] text-[#F15A24]"><Award className="h-5 w-5" /></span>
+            <h3 className="font-display text-xl font-bold text-[#1C1C1C]">Additional Credentials</h3>
           </div>
-
-          {/* Column 2: Certifications */}
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FDEEE8] text-[#F15A24] flex items-center justify-center">
-                <Award className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-[#1C1C1C] text-xl">
-                Certifications &amp; Competencies
-              </h3>
-            </div>
-
-            <div className="bg-white border border-[#EAE4DD] rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5">
-              {certificationsList.map((cert, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3.5 pb-4 border-b border-[#EAE4DD]/70 last:border-b-0 last:pb-0"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-[#FDEEE8] text-[#F15A24] flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[#1C1C1C] text-sm">{cert.title}</h4>
-                    <p className="text-[#666666] text-xs mt-0.5 leading-relaxed">{cert.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ul className="divide-y divide-[#EAE4DD] rounded-2xl border border-[#EAE4DD] bg-white px-5 shadow-[0_4px_20px_rgba(0,0,0,0.025)]">
+            {certificationsList.map((credential) => (
+              <li key={credential.title} className="flex items-center gap-3 py-4 text-sm font-semibold text-[#333333]">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-[#F15A24]" aria-hidden="true" />
+                {credential.title}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
-  );
-};
+    </SectionReveal>
+  </section>
+);

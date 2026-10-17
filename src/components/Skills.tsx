@@ -1,96 +1,74 @@
-import React, { useState } from 'react';
-import { Layout, Server, Database, Wrench } from 'lucide-react';
-import { skillCategories } from '../data/portfolioData';
+import React from 'react';
+import { Braces, Database, GitBranch, Layers3, Server, Sparkles } from 'lucide-react';
+import { SectionReveal } from './SectionReveal';
 
-const iconMap: Record<string, React.ReactNode> = {
-  Layout: <Layout className="w-5 h-5" />,
-  Server: <Server className="w-5 h-5" />,
-  Database: <Database className="w-5 h-5" />,
-  Wrench: <Wrench className="w-5 h-5" />,
+type SkillCategory = {
+  title: string;
+  icon: React.ReactNode;
+  skills?: string[];
+  learning?: string[];
 };
 
-export const Skills: React.FC = () => {
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
+const categories: SkillCategory[] = [
+  {
+    title: 'Frontend Development',
+    icon: <Layers3 className="h-5 w-5" />,
+    skills: ['HTML5', 'CSS3', 'JavaScript ES6+', 'React.js', 'Vue.js', 'Responsive Design', 'CSS Flexbox', 'CSS Grid'],
+  },
+  {
+    title: 'Backend Development',
+    icon: <Server className="h-5 w-5" />,
+    skills: ['Node.js', 'Express.js', 'RESTful APIs'],
+    learning: ['GraphQL · In Progress'],
+  },
+  {
+    title: 'Databases',
+    icon: <Database className="h-5 w-5" />,
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+  },
+  {
+    title: 'Developer Tools',
+    icon: <GitBranch className="h-5 w-5" />,
+    skills: ['Git', 'GitHub', 'Visual Studio Code', 'Command Line / Terminal'],
+  },
+  {
+    title: 'Currently Learning',
+    icon: <Sparkles className="h-5 w-5" />,
+    learning: ['Full-stack integration', 'Advanced React patterns', 'Deployment workflows'],
+  },
+];
 
-  const filterOptions = [
-    { label: 'All Technologies', value: 'all' },
-    { label: 'Frontend', value: 'frontend' },
-    { label: 'Backend & APIs', value: 'backend' },
-    { label: 'Databases', value: 'databases' },
-    { label: 'Tools & DevOps', value: 'tools' },
-  ];
-
-  const filteredCategories = skillCategories.filter((cat) => {
-    if (selectedFilter === 'all') return true;
-    if (selectedFilter === 'frontend') return cat.title.toLowerCase().includes('frontend');
-    if (selectedFilter === 'backend') return cat.title.toLowerCase().includes('backend');
-    if (selectedFilter === 'databases') return cat.title.toLowerCase().includes('database');
-    if (selectedFilter === 'tools') return cat.title.toLowerCase().includes('tools');
-    return true;
-  });
-
-  return (
-    <section id="skills" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-white border border-[#EAE4DD] text-[#F15A24] font-mono text-xs font-semibold uppercase tracking-widest mb-3 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-            Technical Stack
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-[#1C1C1C] tracking-tight">
-            Verified Skills &amp; Competencies
-          </h2>
-          <p className="text-[#666666] text-sm sm:text-base mt-3 leading-relaxed">
-            Technologies practiced and demonstrated through active projects and certified training.
-          </p>
+export const Skills: React.FC = () => (
+  <section id="skills" className="py-20 sm:py-24">
+    <SectionReveal className="mx-auto max-w-6xl px-6">
+      <div className="mb-12 max-w-2xl">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-px w-10 bg-[#F15A24]" aria-hidden="true" />
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#F15A24]">Skills &amp; Technologies</span>
         </div>
-
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {filterOptions.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => setSelectedFilter(opt.value)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-                selectedFilter === opt.value
-                  ? 'bg-[#1C1C1C] text-white shadow-sm'
-                  : 'bg-white border border-[#EAE4DD] text-[#666666] hover:text-[#1C1C1C] hover:border-[#1C1C1C]'
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredCategories.map((category) => (
-            <div
-              key={category.title}
-              className="bg-white border border-[#EAE4DD] rounded-3xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-[#F15A24]/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-1 duration-300"
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-[#FDEEE8] text-[#F15A24] flex items-center justify-center">
-                  {iconMap[category.iconName] || <Layout className="w-5 h-5" />}
-                </div>
-                <h3 className="font-display font-bold text-[#1C1C1C] text-base">{category.title}</h3>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FDF8F3] border border-[#EAE4DD] text-[#1C1C1C] text-xs font-medium hover:border-[#F15A24] transition-colors"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F15A24]" />
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <h2 className="font-display text-3xl font-extrabold tracking-tight text-[#1C1C1C] sm:text-4xl">My Technical Toolkit</h2>
+        <p className="mt-3 text-base leading-7 text-[#666666]">The tools I work with and the areas I’m developing next.</p>
       </div>
-    </section>
-  );
-};
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {categories.map((category) => (
+          <article key={category.title} className="rounded-2xl border border-[#EAE4DD] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.025)] transition duration-200 hover:-translate-y-0.5 hover:border-[#F15A24]/40 hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)]">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDEEE8] text-[#F15A24]">{category.icon}</span>
+              <h3 className="font-display text-base font-bold text-[#1C1C1C]">{category.title}</h3>
+            </div>
+            {category.skills && <ul className="flex flex-wrap gap-2" aria-label={`${category.title} skills`}>
+              {category.skills.map((skill) => <li key={skill} className="rounded-lg border border-[#EAE4DD] bg-[#FDF8F3] px-3 py-1.5 text-xs font-medium text-[#444444]">{skill}</li>)}
+            </ul>}
+            {category.learning && <>
+              {category.skills && <p className="mb-2 mt-4 text-[10px] font-bold uppercase tracking-[0.14em] text-[#F15A24]">In progress</p>}
+              <ul className="flex flex-wrap gap-2" aria-label={`${category.title} topics`}>
+                {category.learning.map((skill) => <li key={skill} className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-[#E9A58C] bg-[#FFF9F6] px-3 py-1.5 text-xs font-medium text-[#8A452D]"><Braces className="h-3 w-3" />{skill}</li>)}
+              </ul>
+            </>}
+          </article>
+        ))}
+      </div>
+    </SectionReveal>
+  </section>
+);

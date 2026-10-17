@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="iris-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="orb-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" rx="16" fill="url(#iris-bg)" />
+  <rect x="1" y="1" width="798" height="498" rx="15" fill="none" stroke="#1f2937" stroke-width="1.5"/>
+
+  <!-- Window Header -->
+  <rect x="0" y="0" width="800" height="56" fill="#111827" fill-opacity="0.9"/>
+  <circle cx="36" cy="28" r="6" fill="#ef4444"/>
+  <circle cx="56" cy="28" r="6" fill="#f59e0b"/>
+  <circle cx="76" cy="28" r="6" fill="#10b981"/>
+  <text x="110" y="33" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Iris AI Voice Assistant — FastAPI &amp; SQLite Backend</text>
+  <rect x="670" y="15" width="105" height="26" rx="6" fill="#047857"/>
+  <text x="722" y="32" fill="#a7f3d0" font-family="monospace" font-size="12" font-weight="600" text-anchor="middle">API 200 OK</text>
+
+  <!-- Left Side: Interactive Voice Orb & Waveform -->
+  <rect x="30" y="80" width="340" height="390" rx="14" fill="#131d2e" stroke="#1e293b" stroke-width="1"/>
+  
+  <!-- Glowing AI Core Orb -->
+  <circle cx="200" cy="210" r="75" fill="url(#orb-grad)" filter="url(#glow)" opacity="0.8"/>
+  <circle cx="200" cy="210" r="65" fill="url(#orb-grad)"/>
+  <circle cx="200" cy="210" r="45" fill="#0b1120" opacity="0.6"/>
+  <circle cx="200" cy="210" r="20" fill="#38bdf8" opacity="0.9"/>
+
+  <!-- Live Pulse Waves -->
+  <circle cx="200" cy="210" r="95" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+  <circle cx="200" cy="210" r="115" fill="none" stroke="#818cf8" stroke-width="1" stroke-dasharray="8,6" opacity="0.3"/>
+
+  <text x="200" y="335" fill="#f3f4f6" font-family="system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Listening for voice prompts...</text>
+  <text x="200" y="358" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">"What time is it?" • "Set preference" • "Status"</text>
+
+  <!-- Mic Action Button -->
+  <rect x="140" y="385" width="120" height="40" rx="20" fill="url(#orb-grad)"/>
+  <text x="200" y="410" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">🎙️ SPEAK NOW</text>
+
+  <!-- Right Side: Real API & Database Log Stream -->
+  <rect x="390" y="80" width="380" height="390" rx="14" fill="#0d131f" stroke="#1e293b" stroke-width="1"/>
+  <rect x="390" y="80" width="380" height="40" rx="14" fill="#161f30"/>
+  <text x="415" y="105" fill="#94a3b8" font-family="monospace" font-size="13" font-weight="600">POST /api/command — Session Log</text>
+
+  <!-- Message 1: User -->
+  <rect x="410" y="136" width="340" height="60" rx="10" fill="#1e293b"/>
+  <text x="426" y="158" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700">[USER • 10:42 AM]</text>
+  <text x="426" y="178" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="13">"Hey Iris, what is the current time in Karachi?"</text>
+
+  <!-- Message 2: Iris Response -->
+  <rect x="410" y="208" width="340" height="74" rx="10" fill="#1e1b4b" stroke="#4338ca" stroke-width="1"/>
+  <text x="426" y="230" fill="#a78bfa" font-family="monospace" font-size="11" font-weight="700">[IRIS AGENT • FastAPI Dispatch]</text>
+  <text x="426" y="250" fill="#e0e7ff" font-family="system-ui, sans-serif" font-size="13">"The current time is 10:42 AM. All systems are operational."</text>
+  <text x="426" y="270" fill="#818cf8" font-family="monospace" font-size="10">Saved to iris.db: id=142, duration=18ms</text>
+
+  <!-- Message 3: Command Parser Info -->
+  <rect x="410" y="294" width="340" height="150" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="426" y="318" fill="#64748b" font-family="monospace" font-size="11" font-weight="700">FASTAPI &amp; SQLALCHEMY TELEMETRY</text>
+  <text x="426" y="342" fill="#34d399" font-family="monospace" font-size="12">✓ SQLite session connected</text>
+  <text x="426" y="364" fill="#34d399" font-family="monospace" font-size="12">✓ Pydantic Command schema validated</text>
+  <text x="426" y="386" fill="#34d399" font-family="monospace" font-size="12">✓ StaticFiles mounted at /</text>
+  <text x="426" y="408" fill="#94a3b8" font-family="monospace" font-size="12">✓ Uvicorn server running on 127.0.0.1:8000</text>
+  <text x="426" y="428" fill="#60a5fa" font-family="monospace" font-size="11">Models: Message, UserPreference</text>
+</svg>

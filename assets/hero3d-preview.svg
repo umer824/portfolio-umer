@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="h3d-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f1a" />
+      <stop offset="100%" stop-color="#141a2e" />
+    </linearGradient>
+    <linearGradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c5cff" />
+      <stop offset="100%" stop-color="#00d1ff" />
+    </linearGradient>
+    <linearGradient id="glass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+    </linearGradient>
+    <filter id="card-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="15" stdDeviation="20" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" rx="16" fill="url(#h3d-bg)" />
+  <rect x="1" y="1" width="798" height="498" rx="15" fill="none" stroke="#252e48" stroke-width="1.5"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="56" fill="#101626" fill-opacity="0.8"/>
+  <circle cx="36" cy="28" r="6" fill="#ef4444"/>
+  <circle cx="56" cy="28" r="6" fill="#f59e0b"/>
+  <circle cx="76" cy="28" r="6" fill="#10b981"/>
+  <text x="110" y="33" fill="#9aa6bf" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Mobile-First 3D Perspective UI Engine — CSS3 &amp; DOM Manipulation</text>
+  <rect x="680" y="14" width="90" height="28" rx="6" fill="#7c5cff" fill-opacity="0.2" stroke="#7c5cff" stroke-width="1"/>
+  <text x="725" y="32" fill="#a78bfa" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">60 FPS CSS3</text>
+
+  <!-- Left: Perspective Grid & 3D Cards -->
+  <g transform="translate(60, 90)">
+    <!-- Back card tilted -->
+    <polygon points="120,40 340,10 340,240 120,270" fill="#1e1b4b" opacity="0.6" stroke="#4338ca" stroke-width="1"/>
+    
+    <!-- Middle card tilted -->
+    <polygon points="90,70 310,40 310,270 90,300" fill="#0f172a" opacity="0.8" stroke="#38bdf8" stroke-width="1.5"/>
+    
+    <!-- Front Glass Card -->
+    <polygon points="60,100 280,70 280,300 60,330" fill="url(#glass-grad)" stroke="#00d1ff" stroke-width="2" filter="url(#card-shadow)"/>
+    
+    <!-- Neon badge on front card -->
+    <rect x="90" y="130" width="120" height="26" rx="6" fill="url(#neon-glow)"/>
+    <text x="150" y="147" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">3D GYROSCOPE</text>
+
+    <!-- Card Content -->
+    <text x="90" y="190" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">Spatial Depth</text>
+    <text x="90" y="212" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">transform: perspective(1000px)</text>
+    <text x="90" y="230" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">rotateX(14deg) rotateY(-18deg)</text>
+
+    <!-- Interactive Glowing cursor indicator -->
+    <circle cx="210" cy="265" r="14" fill="#00d1ff" opacity="0.3"/>
+    <circle cx="210" cy="265" r="6" fill="#00d1ff"/>
+    <text x="232" y="270" fill="#38bdf8" font-family="monospace" font-size="11">pointermove</text>
+  </g>
+
+  <!-- Right: Metrics & Interactive Features -->
+  <rect x="440" y="90" width="320" height="360" rx="14" fill="#101728" stroke="#1f2c4c" stroke-width="1"/>
+  
+  <text x="465" y="130" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Performance &amp; Styling Highlights</text>
+  <text x="465" y="152" fill="#9aa6bf" font-family="system-ui, sans-serif" font-size="12">Hardware-accelerated rendering</text>
+
+  <!-- Spec Item 1 -->
+  <rect x="465" y="172" width="270" height="48" rx="8" fill="#15213b"/>
+  <text x="480" y="194" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Sub-pixel Glassmorphism</text>
+  <text x="480" y="210" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">backdrop-filter: blur(12px) saturating depth</text>
+
+  <!-- Spec Item 2 -->
+  <rect x="465" y="230" width="270" height="48" rx="8" fill="#15213b"/>
+  <text x="480" y="252" fill="#a78bfa" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Touch &amp; Gyro Sensor Hook</text>
+  <text x="480" y="268" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">DeviceOrientation &amp; dynamic spring physics</text>
+
+  <!-- Spec Item 3 -->
+  <rect x="465" y="288" width="270" height="48" rx="8" fill="#15213b"/>
+  <text x="480" y="310" fill="#34d399" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Zero Dependencies</text>
+  <text x="480" y="326" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Pure native CSS custom properties &amp; vanilla JS</text>
+
+  <!-- Spec Item 4 -->
+  <rect x="465" y="346" width="270" height="74" rx="8" fill="#15213b"/>
+  <text x="480" y="368" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="700">CSS MATRIX MATH</text>
+  <text x="480" y="388" fill="#cbd5e1" font-family="monospace" font-size="11">will-change: transform;</text>
+  <text x="480" y="406" fill="#cbd5e1" font-family="monospace" font-size="11">transform-style: preserve-3d;</text>
+</svg>

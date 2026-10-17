@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lq-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="lq-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="green-pill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" rx="16" fill="url(#lq-bg)" />
+  <rect x="1" y="1" width="798" height="498" rx="15" fill="none" stroke="#334155" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="56" fill="#1e293b" fill-opacity="0.7"/>
+  <circle cx="36" cy="28" r="6" fill="#ef4444"/>
+  <circle cx="56" cy="28" r="6" fill="#f59e0b"/>
+  <circle cx="76" cy="28" r="6" fill="#10b981"/>
+  <text x="110" y="33" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" font-weight="600">LinguaQuest — Multilingual Gamified Learning App</text>
+
+  <rect x="620" y="14" width="70" height="28" rx="14" fill="#312e81"/>
+  <text x="655" y="32" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">🔥 14 STREAK</text>
+
+  <rect x="702" y="14" width="76" height="28" rx="14" fill="#064e3b"/>
+  <text x="740" y="32" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">⚡ 850 XP</text>
+
+  <!-- Sidebar -->
+  <rect x="24" y="80" width="180" height="390" rx="12" fill="#0f172a" fill-opacity="0.8" stroke="#334155" stroke-width="1"/>
+  <text x="44" y="112" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">LEARNING</text>
+  
+  <rect x="36" y="126" width="156" height="36" rx="8" fill="#4338ca"/>
+  <text x="50" y="149" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">🇪🇸 Spanish (Active)</text>
+  
+  <rect x="36" y="170" width="156" height="32" rx="6" fill="#1e293b" fill-opacity="0.6"/>
+  <text x="50" y="191" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">🇯🇵 Japanese</text>
+  
+  <rect x="36" y="210" width="156" height="32" rx="6" fill="#1e293b" fill-opacity="0.6"/>
+  <text x="50" y="231" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">🇫🇷 French</text>
+
+  <rect x="36" y="250" width="156" height="32" rx="6" fill="#1e293b" fill-opacity="0.6"/>
+  <text x="50" y="271" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">🇩🇪 German</text>
+
+  <rect x="36" y="290" width="156" height="32" rx="6" fill="#1e293b" fill-opacity="0.6"/>
+  <text x="50" y="311" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">🇵🇰 Urdu</text>
+
+  <rect x="36" y="330" width="156" height="32" rx="6" fill="#1e293b" fill-opacity="0.6"/>
+  <text x="50" y="351" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">🇸🇦 Arabic</text>
+
+  <!-- Main Quest Path & Exercise UI -->
+  <rect x="224" y="80" width="552" height="390" rx="12" fill="#0f172a" fill-opacity="0.8" stroke="#334155" stroke-width="1"/>
+  
+  <text x="250" y="118" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Unit 2: Daily Conversations & Greetings</text>
+  <text x="250" y="138" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13">Interactive Exercise — Audio & Vocabulary Drill</text>
+
+  <!-- Progress bar -->
+  <rect x="250" y="154" width="500" height="8" rx="4" fill="#1e293b"/>
+  <rect x="250" y="154" width="340" height="8" rx="4" fill="url(#green-pill)"/>
+
+  <!-- Question card -->
+  <rect x="250" y="180" width="500" height="150" rx="12" fill="#1e293b" fill-opacity="0.9" stroke="#475569" stroke-width="1"/>
+  <text x="276" y="214" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">PROMPT</text>
+  <text x="276" y="244" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="600">"¿Cómo estás hoy, amigo?"</text>
+  <text x="276" y="272" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Select the correct English translation:</text>
+
+  <!-- Option pills -->
+  <rect x="276" y="286" width="190" height="32" rx="8" fill="#334155" fill-opacity="0.6"/>
+  <text x="290" y="307" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13">A. Where are you going?</text>
+
+  <rect x="480" y="286" width="220" height="32" rx="8" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+  <text x="494" y="307" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="13" font-weight="600">B. How are you today, friend? ✓</text>
+
+  <!-- Bottom action bar -->
+  <rect x="250" y="350" width="500" height="100" rx="12" fill="#134e4a" fill-opacity="0.4" stroke="#14b8a6" stroke-width="1"/>
+  <circle cx="280" cy="385" r="14" fill="#10b981"/>
+  <path d="M274 385 L278 389 L287 380" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="306" y="382" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Nicely Done! Correct Translation</text>
+  <text x="306" y="402" fill="#99f6e4" font-family="system-ui, sans-serif" font-size="12">+15 XP earned • Streak maintained</text>
+  <rect x="620" y="370" width="110" height="36" rx="8" fill="#10b981"/>
+  <text x="675" y="393" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CONTINUE →</text>
+</svg>

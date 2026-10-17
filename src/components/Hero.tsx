@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative pt-36 pb-20 md:pt-44 md:pb-28">
+    <section id="home" className="relative pt-36 pb-20 md:pt-44 md:pb-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial Info & Pitch */}
